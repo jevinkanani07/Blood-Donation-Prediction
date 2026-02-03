@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
 # ------------------- PAGE CONFIG -------------------
 st.set_page_config(
@@ -10,10 +11,13 @@ st.set_page_config(
 )
 
 # ------------------- LOAD MODEL -------------------
-@st.cache_resource
 def load_model():
-    with open("random_forest_blood_donation.pkl", "rb") as file:
-        return pickle.load(file)
+   MODEL_PATH = os.path.join(os.path.dirname(__file__),
+                          "random_forest_blood_donation.pkl")
+
+    with open(MODEL_PATH, "rb") as file:
+        model = pickle.load(file)
+    return model
 
 model = load_model()
 
@@ -131,3 +135,4 @@ with st.expander("Model & Project Details"):
 st.divider()
 
 st.caption("Developed by Jevin Kanani | Capstone ML Project ")
+
