@@ -14,10 +14,9 @@ st.set_page_config(
 def load_model():
    MODEL_PATH = os.path.join(os.path.dirname(__file__),
                           "random_forest_blood_donation.pkl")
-
-    with open(MODEL_PATH, "rb") as file:
+   with open(MODEL_PATH, "rb") as file:
         model = pickle.load(file)
-    return model
+   return model
 
 model = load_model()
 
@@ -135,4 +134,5 @@ with st.expander("Model & Project Details"):
 st.divider()
 
 st.caption("Developed by Jevin Kanani | Capstone ML Project ")
+
 
